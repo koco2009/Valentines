@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secret 💌</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9acb, #ffd6e8);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      padding: 30px 24px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      animation: pop 0.5s ease-out;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #ff3f8f;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff5fa2, #ff9acb);
+      color: white;
+      transition: transform 0.2s ease;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .photo-container {
+      margin-top: 20px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 18px;
+      margin-bottom: 12px;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>kiss akshit to get the secret password 😉</h2>
+    <input type="password" id="passwordInput" placeholder="type here..." />
+    <button onclick="checkPassword()">unlock 🔓</button>
+    <div class="error" id="errorText">wrong password 😤 try again</div>
+
+    <div class="photo-container" id="photoContainer">
+      <!-- Replace photo.jpg with your real image file -->
+      <img src="photo.jpeg" id="secretPhoto" alt="Secret Photo" />
+      <a href="photo.jpeg" download>
+        <button>download photo 📥</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = "kisses"; // CHANGE THIS PASSWORD
+
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value;
+      const photoContainer = document.getElementById('photoContainer');
+      const errorText = document.getElementById('errorText');
+
+      if (input === correctPassword) {
+        photoContainer.style.display = 'flex';
+        errorText.style.display = 'none';
+      } else {
+        errorText.style.display = 'block';
+        photoContainer.style.display = 'none';
+      }
+    }
+
+    /*
+    BASIC TEST CASES:
+    1. Enter "mehak" → Photo appears + download button visible.
+    2. Enter wrong password → Error message shown.
+    3. Refresh page → Photo hidden again.
+    */
+  </script>
+
+</body>
+</html>

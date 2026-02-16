@@ -67,14 +67,16 @@
       transform: scale(1.05);
     }
 
-    .photo-container {
+    .photo-container,
+    .hug-container,
+    .video-container {
       margin-top: 20px;
       display: none;
       flex-direction: column;
       align-items: center;
     }
 
-    img {
+    img, video {
       width: 100%;
       max-width: 300px;
       border-radius: 18px;
@@ -92,18 +94,35 @@
 <body>
 
   <div class="card">
-    <h2>kiss akshit to get the secret password 😉</h2>
+    <h2>kiss me to get the password... 💖</h2>
     <input type="password" id="passwordInput" placeholder="type here..." />
     <button onclick="checkPassword()">unlock 🔓</button>
     <div class="error" id="errorText">wrong password 😤 try again</div>
 
+    <!-- PHOTO SECTION -->
     <div class="photo-container" id="photoContainer">
-      <!-- Replace photo.jpg with your real image file -->
       <img src="photo.jpeg" id="secretPhoto" alt="Secret Photo" />
-      <a href="photo.jpeg" download>
-        <button>download photo 📥</button>
+      <button onclick="askForHug()">next surprise 🎁</button>
+    </div>
+
+    <!-- HUG CONFIRMATION SECTION -->
+    <div class="hug-container" id="hugContainer">
+      <h2>you want the video? 🤭</h2>
+      <p style="margin: 10px 0;">first give me a hug 🫂</p>
+      <button onclick="giveHug()">hug 🤗</button>
+    </div>
+
+    <!-- VIDEO SECTION -->
+    <div class="video-container" id="videoContainer">
+      <video id="secretVideo" controls>
+        <source src="wink.mp4" type="video/mp4">
+        your browser does not support video.
+      </video>
+      <a href="wink.mp4" download>
+        <button>download video 📥</button>
       </a>
     </div>
+
   </div>
 
   <script>
@@ -123,11 +142,21 @@
       }
     }
 
+    function askForHug() {
+      document.getElementById('photoContainer').style.display = 'none';
+      document.getElementById('hugContainer').style.display = 'flex';
+    }
+
+    function giveHug() {
+      document.getElementById('hugContainer').style.display = 'none';
+      document.getElementById('videoContainer').style.display = 'flex';
+    }
+
     /*
-    BASIC TEST CASES:
-    1. Enter "mehak" → Photo appears + download button visible.
-    2. Enter wrong password → Error message shown.
-    3. Refresh page → Photo hidden again.
+    FLOW:
+    1. Enter correct password → Photo appears.
+    2. Click "download surprise" → Hug screen appears.
+    3. Click "hug" → Video + download button appears.
     */
   </script>
 

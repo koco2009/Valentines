@@ -30,22 +30,28 @@ body{
     100%{background-position:0% 50%;}
 }
 
-/* Floating Hearts */
-.heart{
-    position:fixed;
-    bottom:-10px;
-    font-size:20px;
-    animation: floatUp 6s linear infinite;
-    opacity:0.7;
+/* Back Button */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:white;
+    color:#ff4e88;
+    padding:10px 20px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
 }
 
-@keyframes floatUp{
-    0%{transform:translateY(0) scale(1);}
-    100%{transform:translateY(-100vh) scale(1.5);}
+.back-btn:hover{
+    background:#ff4e88;
+    color:white;
 }
 
+/* Content */
 .container{
-    padding:80px 20px;
+    padding:100px 20px;
 }
 
 .title{
@@ -92,112 +98,24 @@ body{
     color:white;
     transform:scale(1.05);
 }
-
-.products{
-    margin-top:80px;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
-.card{
-    background:rgba(255,255,255,0.15);
-    padding:25px;
-    border-radius:20px;
-    width:220px;
-    backdrop-filter:blur(10px);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.countdown{
-    margin-top:25px;
-    font-size:20px;
-    font-weight:600;
-}
-
-footer{
-    margin-top:80px;
-    padding-bottom:20px;
-    opacity:0.8;
-}
 </style>
 </head>
 
 <body>
+
+<a href="https://koco2009.github.io/PostureBuddy/" class="back-btn">⬅ Back</a>
 
 <div class="container">
     <div class="title">Valentine’s Special 💖</div>
     <div class="subtitle">Exclusive Collaboration with <strong>Posture Buddy</strong></div>
 
     <div class="glass">
-        <p>Celebrate love with custom aesthetic posters & couple gifts 🎀</p>
+        <p>Celebrate love with custom aesthetic postures & couple discounts 🎀</p>
         <div class="discount">🔥 30% OFF 🔥</div>
         <p>Limited Time Valentine's Collection</p>
         <a href="#" class="btn">Shop Now</a>
-        <div class="countdown" id="timer"></div>
     </div>
-
-    <div class="products">
-        <div class="card">
-            <h3>Couple Posters</h3>
-            <p>Now 30% OFF</p>
-        </div>
-        <div class="card">
-            <h3>Custom Name Frames</h3>
-            <p>Now 30% OFF</p>
-        </div>
-        <div class="card">
-            <h3>Love Quote Prints</h3>
-            <p>Now 30% OFF</p>
-        </div>
-    </div>
-
-    <footer>
-        Made with love ❤️ | Valentine x Poster Buddy Collaboration
-    </footer>
 </div>
-
-<script>
-// Countdown (7 days from now)
-let countDownDate = new Date();
-countDownDate.setDate(countDownDate.getDate() + 7);
-
-let x = setInterval(function(){
-    let now = new Date().getTime();
-    let distance = countDownDate - now;
-
-    let days = Math.floor(distance / (1000*60*60*24));
-    let hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-    let minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-
-    document.getElementById("timer").innerHTML =
-    "⏳ Offer ends in: " + days + "d " + hours + "h " + minutes + "m";
-
-    if(distance < 0){
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "Offer Expired 💔";
-    }
-},1000);
-
-// Floating hearts generator
-setInterval(()=>{
-    let heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = (Math.random()*3 + 3) + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{heart.remove();},6000);
-},500);
-
-</script>
 
 </body>
 </html>
-

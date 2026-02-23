@@ -1,164 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Secret 💌</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine x Poster Buddy</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9acb, #ffd6e8);
-      font-family: 'Poppins', sans-serif;
-    }
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    color:white;
+    background: linear-gradient(-45deg,#ff4e88,#ff85a2,#ffb6c1,#ff6fa5);
+    background-size:400% 400%;
+    animation: gradientBG 10s ease infinite;
+    text-align:center;
+}
 
-    .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 24px;
-      padding: 30px 24px;
-      width: 90%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-      animation: pop 0.5s ease-out;
-    }
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
-    @keyframes pop {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+    opacity:0.7;
+}
 
-    h2 {
-      margin-bottom: 15px;
-      color: #ff3f8f;
-    }
+@keyframes floatUp{
+    0%{transform:translateY(0) scale(1);}
+    100%{transform:translateY(-100vh) scale(1.5);}
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      font-size: 1rem;
-      margin-bottom: 15px;
-      outline: none;
-    }
+.container{
+    padding:80px 20px;
+}
 
-    button {
-      padding: 12px 18px;
-      border-radius: 14px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      background: linear-gradient(135deg, #ff5fa2, #ff9acb);
-      color: white;
-      transition: transform 0.2s ease;
-      margin-top: 8px;
-    }
+.title{
+    font-family:'Great Vibes',cursive;
+    font-size:60px;
+}
 
-    button:hover {
-      transform: scale(1.05);
-    }
+.subtitle{
+    font-size:22px;
+    margin-bottom:40px;
+}
 
-    .photo-container,
-    .hug-container,
-    .video-container {
-      margin-top: 20px;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
+.glass{
+    background:rgba(255,255,255,0.15);
+    padding:40px;
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    width:90%;
+    max-width:600px;
+    margin:auto;
+    box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
 
-    img, video {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 18px;
-      margin-bottom: 12px;
-    }
+.discount{
+    font-size:45px;
+    font-weight:800;
+    margin:20px 0;
+}
 
-    .error {
-      color: red;
-      font-size: 0.9rem;
-      margin-top: 5px;
-      display: none;
-    }
-  </style>
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    margin-top:20px;
+    background:white;
+    color:#ff4e88;
+    border-radius:40px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ff4e88;
+    color:white;
+    transform:scale(1.05);
+}
+
+.products{
+    margin-top:80px;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    padding:25px;
+    border-radius:20px;
+    width:220px;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.countdown{
+    margin-top:25px;
+    font-size:20px;
+    font-weight:600;
+}
+
+footer{
+    margin-top:80px;
+    padding-bottom:20px;
+    opacity:0.8;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h2>kiss me to get the password... 💖</h2>
-    <input type="password" id="passwordInput" placeholder="type here..." />
-    <button onclick="checkPassword()">unlock 🔓</button>
-    <div class="error" id="errorText">wrong password 😤 try again</div>
+<div class="container">
+    <div class="title">Valentine’s Special 💖</div>
+    <div class="subtitle">Exclusive Collaboration with <strong>Poster Buddy</strong></div>
 
-    <!-- PHOTO SECTION -->
-    <div class="photo-container" id="photoContainer">
-      <img src="photo.jpeg" id="secretPhoto" alt="Secret Photo" />
-      <button onclick="askForHug()">next surprise 🎁</button>
+    <div class="glass">
+        <p>Celebrate love with custom aesthetic posters & couple gifts 🎀</p>
+        <div class="discount">🔥 30% OFF 🔥</div>
+        <p>Limited Time Valentine's Collection</p>
+        <a href="#" class="btn">Shop Now</a>
+        <div class="countdown" id="timer"></div>
     </div>
 
-    <!-- HUG CONFIRMATION SECTION -->
-    <div class="hug-container" id="hugContainer">
-      <h2>you want the video? 🤭</h2>
-      <p style="margin: 10px 0;">first give me a hug 🫂</p>
-      <button onclick="giveHug()">hug 🤗</button>
+    <div class="products">
+        <div class="card">
+            <h3>Couple Posters</h3>
+            <p>Now 30% OFF</p>
+        </div>
+        <div class="card">
+            <h3>Custom Name Frames</h3>
+            <p>Now 30% OFF</p>
+        </div>
+        <div class="card">
+            <h3>Love Quote Prints</h3>
+            <p>Now 30% OFF</p>
+        </div>
     </div>
 
-    <!-- VIDEO SECTION -->
-    <div class="video-container" id="videoContainer">
-      <video id="secretVideo" controls>
-        <source src="wink.mp4" type="video/mp4">
-        your browser does not support video.
-      </video>
-      <a href="wink.mp4" download>
-        <button>download video 📥</button>
-      </a>
-    </div>
+    <footer>
+        Made with love ❤️ | Valentine x Poster Buddy Collaboration
+    </footer>
+</div>
 
-  </div>
+<script>
+// Countdown (7 days from now)
+let countDownDate = new Date();
+countDownDate.setDate(countDownDate.getDate() + 7);
 
-  <script>
-    const correctPassword = "kisses"; // CHANGE THIS PASSWORD
+let x = setInterval(function(){
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
 
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value;
-      const photoContainer = document.getElementById('photoContainer');
-      const errorText = document.getElementById('errorText');
+    let days = Math.floor(distance / (1000*60*60*24));
+    let hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60))/(1000*60));
 
-      if (input === correctPassword) {
-        photoContainer.style.display = 'flex';
-        errorText.style.display = 'none';
-      } else {
-        errorText.style.display = 'block';
-        photoContainer.style.display = 'none';
-      }
+    document.getElementById("timer").innerHTML =
+    "⏳ Offer ends in: " + days + "d " + hours + "h " + minutes + "m";
+
+    if(distance < 0){
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "Offer Expired 💔";
     }
+},1000);
 
-    function askForHug() {
-      document.getElementById('photoContainer').style.display = 'none';
-      document.getElementById('hugContainer').style.display = 'flex';
-    }
+// Floating hearts generator
+setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*3 + 3) + "s";
+    document.body.appendChild(heart);
 
-    function giveHug() {
-      document.getElementById('hugContainer').style.display = 'none';
-      document.getElementById('videoContainer').style.display = 'flex';
-    }
+    setTimeout(()=>{heart.remove();},6000);
+},500);
 
-    /*
-    FLOW:
-    1. Enter correct password → Photo appears.
-    2. Click "download surprise" → Hug screen appears.
-    3. Click "hug" → Video + download button appears.
-    */
-  </script>
+</script>
 
 </body>
 </html>
